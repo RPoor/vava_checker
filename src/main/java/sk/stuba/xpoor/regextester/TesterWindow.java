@@ -16,7 +16,6 @@ public class TesterWindow extends JFrame {
 
     private final JCheckBox caseInsensitiveToggle;
     private final JCheckBox specialCharacterIgnoreToggle;
-    private final JCheckBox trimCleanToggle;
 
     private void recheckCallback() {
         boolean matches;
@@ -57,7 +56,7 @@ public class TesterWindow extends JFrame {
     }
 
     private void trimCleanCallback() {
-        toggle(trimCleanToggle, Preprocessor.TrimClean);
+        textEntry.setText(Preprocessor.TrimClean.apply(textEntry.getText()));
     }
 
     public TesterWindow() {
@@ -72,7 +71,7 @@ public class TesterWindow extends JFrame {
 
         caseInsensitiveToggle = new JCheckBox("Case Insensitive");
         specialCharacterIgnoreToggle = new JCheckBox("Ignore special characters");
-        trimCleanToggle = new JCheckBox("Trim and clean text");
+        var trimCleanButton = new JButton("Trim and clean text");
 
         var textEntryLabel = new JLabel("Text to test");
         var regexEntryLabel = new JLabel("Regex");
@@ -85,7 +84,7 @@ public class TesterWindow extends JFrame {
 
         caseInsensitiveToggle.addActionListener((event) -> caseInsensitiveCallback());
         specialCharacterIgnoreToggle.addActionListener((event) -> specialCharacterIgnoreCallback());
-        trimCleanToggle.addActionListener((event) -> trimCleanCallback());
+        trimCleanButton.addActionListener((event) -> trimCleanCallback());
         refreshButton.addActionListener((event) -> recheckCallback());
 
         successBox.setEditable(false);
@@ -112,7 +111,7 @@ public class TesterWindow extends JFrame {
         c.gridx = 3;
         add(specialCharacterIgnoreToggle, c);
         c.gridx = 4;
-        add(trimCleanToggle, c);
+        add(trimCleanButton, c);
         c.gridx = 0;
         c.gridy = 3;
         add(successLabel, c);
