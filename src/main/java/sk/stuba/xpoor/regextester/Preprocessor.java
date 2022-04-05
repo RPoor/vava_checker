@@ -5,7 +5,7 @@ import java.util.function.Function;
 public enum Preprocessor {
     CaseInsensitive(String::toLowerCase),
     IgnoreSpecialCharacters((str) -> str.replaceAll("[^a-zA-Z0-9 ]", "")),
-    TrimClean((str) -> str.trim().replaceAll("\\P{Print}", ""))
+    TrimClean((str) -> str.replaceAll("\\P{Print}", "").trim())
     ;
     private final Function<String, String> f;
     Preprocessor(Function<String, String> preprocessor) {
