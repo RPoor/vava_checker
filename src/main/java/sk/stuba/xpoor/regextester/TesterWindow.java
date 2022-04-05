@@ -93,7 +93,9 @@ public class TesterWindow extends JFrame {
         add(textEntryLabel, c);
         c.gridx = 1;
         c.gridwidth = 4;
+        c.fill = GridBagConstraints.HORIZONTAL;
         add(textEntry, c);
+        c.fill = GridBagConstraints.NONE;
         c.gridwidth = 1;
         c.gridy = 1;
         c.gridx = 0;
